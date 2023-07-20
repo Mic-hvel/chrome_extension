@@ -46,7 +46,8 @@ var ChatGPTExtension = /*#__PURE__*/function () {
     value: function promptToChatGPT() {
       var prompt = "From now on, if you need to write a mathematical expression, use Katex notation";
       var input = document.querySelector("#prompt-textarea");
-      console.log(input);
+      input.value = prompt;
+      document.querySelector("textarea~button").click();
     }
   }]);
   return ChatGPTExtension;

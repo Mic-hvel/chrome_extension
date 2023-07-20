@@ -18,7 +18,8 @@ class ChatGPTExtension {
     promptToChatGPT() {
         const prompt = "From now on, if you need to write a mathematical expression, use Katex notation"
         const input = document.querySelector("#prompt-textarea")
-        console.log(input)
+        input.value = prompt
+        document.querySelector("textarea~button").click()
     }
 
 }
