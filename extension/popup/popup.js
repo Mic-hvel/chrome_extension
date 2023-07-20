@@ -1,12 +1,15 @@
 const btnPrompt = document.querySelector("#btn-prompt")
 const btnRender = document.querySelector("#btn-render")
+const [currentTab] = await chrome.tabs.query({active: true, currentWindow: true})
 
 btnPrompt.addEventListener('click', async() => {
     //console.log("Prompting to ChatGPT")
-    const [currentTab] = await chrome.tabs.query({active: true, currentWindow: true})
-    await chrome.tabs.sendMessage(currentTab.id, {hello: "world", message: "prompting to ChatGPT"})
+    
+    await chrome.tabs.sendMessage(currentTab.id, {action: "PROMPT"})
 })
 
-btnRender.addEventListener('click', e => {
+btnRender.addEventListener('click', async() => {
+    await chrome.tabs.sendMessage(currentTab.id, {action: "RENDER"})
+    
     console.log('rendering math in ChatGPT')
 })
